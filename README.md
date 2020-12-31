@@ -2,10 +2,9 @@
 
 ### GitHub Stats
 
-<a href="https://github.com/machado-lab">
+<a href="https://github.com/sabesansathananthan">
+<img align="center" alt="sabesan's Github Stats" src="https://github-readme-stats.codestackr.vercel.app/api?username=sabesansathananthan&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&theme=radical" /></a>
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=machado-lab&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21"
-    title="Top languages" alt="Top languages" />
-<img src="https://github-readme-stats.vercel.app/api?username=machado-lab&show_icons=true&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21"
-    title="Profile stats" alt="Profile stats" />
+<a href="https://github.com/sabesansathananthan">
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=sabesansathananthan&layout=compact&theme=radical" />
 </a>
