@@ -2,9 +2,63 @@
 
 ### GitHub Stats
 
-<a href="https://github.com/machado-lab">
-<img align="center" alt="machado-lab's Github Stats" src="https://github-readme-stats.codestackr.vercel.app/api?username=machado-lab&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&theme=radical" /></a>
+package main
 
-<a href="https://github.com/machado-lab">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=machado-lab&layout=compact&theme=radical" />
-</a>
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+)
+
+type Org struct {
+	Name string `json:"login"`
+}
+
+type Repo struct {
+	Name  string `json:"full_name"`
+	Stars int    `json:"stargazers_count"`
+}
+
+func main() {
+	url := "https://api.github.com/users/mattetti/orgs"
+
+	resp, err := http.Get(url)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	var stars int
+
+	var orgs []Org
+	json.Unmarshal(body, &orgs)
+	for _, v := range orgs {
+
+		url = fmt.Sprintf("https://api.github.com/orgs/%s/repos", v.Name)
+
+		resp, err = http.Get(url)
+		if err != nil {
+			panic(err)
+		}
+		defer resp.Body.Close()
+		body, err = ioutil.ReadAll(resp.Body)
+		if err != nil {
+			panic(err)
+		}
+
+		var repos []Repo
+		json.Unmarshal(body, &repos)
+
+		for _, v := range repos {
+			fmt.Println(v.Name, v.Stars)
+			stars += v.Stars
+		}
+	}
+	fmt.Println("-----------------------")
+	fmt.Println("### Total stars:", stars)
+}
